@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        /* .person {
+            padding: 10px;
+            background-color: lightblue;
+            border: 1px solid black;
+            margin: 5px;
+        }
+
+        .children {
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.card h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.card p {
+    margin: 10px 0;
+} */
+
+    </style>
+</head>
+<body>
+    <!-- <div>
+        <h1 id="hasil"></h1>
+        <button onclick="switchCase()">Try</button>
+        <button onclick="hitung()">Hitung Faktorial</button> 
+    </div> -->
+<!-- 
+    <div>
+        <input type="text" id="personName" placeholder="Nama Anggota Keluarga">
+        <button onclick="addPerson()">Tambah Anggota</button>
+    </div>
+    <div id="familyTree"></div>
+
+    <div>
+        <button onclick="perulangan()">Buat Bintang</button>
+        <h4 id="_hasil"></h4>
+
+        <button onclick="panah()">Panah</button>
+        <h4 id="_hasil"></h4>
+    </div> -->
+
+    <div>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Button</button>
+        <button onclick="fetchAPI()">Cek API</button>
+        <ul id="list" class="grid grid-cols-3 gap-3"></ul>
+    </div>
+
+    <script>
+
+    function fetchAPI() {
+            const list = document.getElementById('list')
+            list.innerHTML = ''
+            
+            fetch("https://jsonplaceholder.typicode.com/todos")
+            .then((data) => data.json())
+            .then((data) => {
+                // data.reverse().forEach(element => {
+                data.sort((a, b) => b.id - a.id ).forEach(element => {
+                list.innerHTML += `
+                <div class="max-w-sm rounded shadow-lg">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2">${element.id}</div>
+                            <p class="text-gray-700 text-base">
+                                ${element.title}
+                            </p>
+                        </div>
+                        <div class="px-6 pt-4 pb-2">
+                            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">${element.completed ? "Completed" : "Not Completed"}</span>
+                        </div>
+                        </div>
+                        `
+                    })
+                    
+                })
+        }
+        fetchAPI()
+        //FAMILY TREE
+        //  function createPersonElement(name) {
+        //     let personDiv = document.createElement('div');
+        //     personDiv.className = 'person';
+        //     personDiv.textContent = name;
+        //     personDiv.onclick = function() {
+        //         event.stopPropagation()
+        //         let childName = prompt("Masukkan nama anak untuk " + name);
+        //         if (childName) {
+        //             let childrenDiv = personDiv.querySelector('.children') || createChildrenContainer(personDiv);
+        //             let childDiv = createPersonElement(childName);
+        //             childrenDiv.appendChild(childDiv);
+        //         }
+        //     };
+        //     return personDiv;
+        // }
+
+        // function createChildrenContainer(parentElement) {
+        //     let childrenDiv = document.createElement('div');
+        //     childrenDiv.className = 'children';
+        //     parentElement.appendChild(childrenDiv);
+        //     return childrenDiv;
+        // }
+
+        // function addPerson() {
+        //     let name = document.getElementById('personName').value;
+        //     if (name) {
+        //         let familyTree = document.getElementById('familyTree');
+        //         let personDiv = createPersonElement(name);
+        //         familyTree.appendChild(personDiv);
+        //         document.getElementById('personName').value = ''; // Reset input field
+        //     }
+        // }
+
+        // addPerson('Kakek/Nenek');
+
+
+        //SWITCH
+        // const switchCase = () => {
+        //     let data = prompt("Masukan hari ").toLowerCase()
+        //     switch (data) {
+        //         case "senin":
+        //             alert("Meeting")
+        //             break;
+        //         default:
+        //             alert("Libur")
+        //     }
+        //     }
+        
+        // //RECURSIVE
+        // function hitung() {
+        //     let n = prompt("Masukan angka: ")
+        //     let _hasil = hitungFaktorial(n)
+        //     document.getElementById("hasil").innerHTML = _hasil;
+        // }
+        
+        // function hitungFaktorial(n) {
+        //     if (n === 0 || n === 1){
+        //         return 1;
+        //     } else {
+        //         return n * hitungFaktorial(n - 1);
+        //     }
+        // }
+
+        // function perulangan() {
+        //     let hasil = ' ';   
+        //     for (let i = 1; i <= 6; i++) {
+        //         for (let j = 1; j <= i; j++) {
+        //             document.getElementById("_hasil").innerHTML = hasil += "* ";                
+                    
+        //         }
+        //         document.getElementById("_hasil").innerHTML = hasil += "<br>";
+        //     }
+            
+        // }
+
+        // function panah(){
+        //     let hasil = ' ';   
+        //     for (let i = 6; i >= 1; i--) {
+        //         for (let j = i; j >= 1; j--) {
+        //             document.getElementById("_hasil").innerHTML = hasil += "* ";                
+                    
+        //         }
+        //         document.getElementById("_hasil").innerHTML = hasil += "<br>";
+        //     }
+        // }
+
+        // function fetchAPI() {
+        //     fetch("https://jsonplaceholder.typicode.com/todos")
+        //     .then((data) => data.json())
+        //     .then((data)=> console.log(data));
+        //     .then((data) => {
+        //     data.forEach(element => {
+        //         console.log(element.completed)
+        //     });
+        // })
+
+        
+        
+    </script>
+</body>
+</html>

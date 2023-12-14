@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button onclick="inputCustomer()">Add Customer</button>
+        <button onclick="transactionHandler('deposit')">Pilih Transaksi</button>
+        <button onclick="withdraw()">Withdraw</button>
+    </div>
+    <script>
+        let customers = [];
+
+        function inputCustomer() {
+            let name = prompt("Masukan nama customer ")
+            let accountNumber = prompt("Masukan Account Number ")
+            addCustomer(name, accountNumber)
+        }
+        function addCustomer(name, accountNumber) {
+            let newCustomer = {
+                name: name, 
+                accountNumber: accountNumber,
+                balance: 0,
+                transactionHistory: []
+            };
+            customers.push(newCustomer);
+        }
+
+        function deposit(accountNumber, amount) {
+            // for (let i = 0; i < customers.length; i++) {
+            //     if (customers[i].accountNumber = accountNumber){
+            //         customers[i].balance =        
+            //     }
+            customers.find(accountNumber);
+                
+        }
+
+        function withdraw(accountNumber, amount) {
+            
+        }
+
+        function checkBalance(accountNumber) {
+            
+        }
+
+        function viewTransactionHistory(accountNumber) {
+            
+        }
+
+
+        function transactionType() {
+            let type = prompt("Pilih tipe transaksi")
+        }
+
+        function transactionHandler(type) {
+            switch (type) {
+                case 'deposit':
+                    let accountNumber = prompt("Masukan account number ")
+                    let amount = prompt("Masukan jumlah deposit ")
+                    deposit(accountNumber, amount);
+
+                    break;
+                case 'withdraw':
+                    withdraw(accountNumber, amount);
+                    break;
+        
+                default:
+                    prompt("Invalid transaction type");
+            }
+        }
+
+        function recurringTransaction(accountNumber, amount, frequency) {
+            
+        }
+    </script>
+</body>
+</html>
